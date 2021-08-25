@@ -12,12 +12,7 @@ from tensorflow.keras.layers import (
     MaxPooling2D,
     concatenate,
 )
-from tensorflow.keras.optimizers import Adam
-from tensorflow.keras.callbacks import EarlyStopping, ModelCheckpoint
-
-from tensorflow.keras import backend as K
 from tensorflow.keras.preprocessing.image import ImageDataGenerator
-from tensorflow.keras.callbacks import EarlyStopping, ModelCheckpoint
 
 
 def adjust_data(img, mask) -> tuple:
