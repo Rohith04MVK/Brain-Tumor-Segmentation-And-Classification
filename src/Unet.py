@@ -1,6 +1,6 @@
 import tensorflow as tf
 from tensorflow.keras import Input
-from tensorflow.keras.models import Model, load_model, save_model
+from tensorflow.keras.models import Model
 from tensorflow.keras.layers import (
     Input,
     Activation,
@@ -14,7 +14,6 @@ from tensorflow.keras.layers import (
 )
 from tensorflow.keras.optimizers import Adam
 from tensorflow.keras.callbacks import EarlyStopping, ModelCheckpoint
-from tensorflow.keras.utils import plot_model
 
 from tensorflow.keras import backend as K
 from tensorflow.keras.preprocessing.image import ImageDataGenerator
