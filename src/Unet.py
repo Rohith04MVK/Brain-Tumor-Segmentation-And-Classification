@@ -19,9 +19,6 @@ from tensorflow.keras import backend as K
 from tensorflow.keras.preprocessing.image import ImageDataGenerator
 from tensorflow.keras.callbacks import EarlyStopping, ModelCheckpoint
 
-im_width = 256
-im_height = 256
-
 
 def adjust_data(img, mask) -> tuple:
     img = img / 255
@@ -84,7 +81,7 @@ def unet_data_generator(
         yield (img, mask)
 
 
-def unet(input_size=(256, 256, 3)):
+def unet(input_size):
     inputs = Input(input_size)
 
     conv1 = Conv2D(64, (3, 3), padding="same")(inputs)
