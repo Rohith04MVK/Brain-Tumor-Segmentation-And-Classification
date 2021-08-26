@@ -5,8 +5,6 @@ from tensorflow.keras.layers import (
     Input,
     Activation,
     BatchNormalization,
-    Dropout,
-    Lambda,
     Conv2D,
     Conv2DTranspose,
     MaxPooling2D,
