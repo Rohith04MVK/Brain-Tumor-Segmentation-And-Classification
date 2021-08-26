@@ -81,6 +81,13 @@ def unet(input_size):
     U-Nets are convolutuinal layers used for image segmentation.
     Its architecture can be broadly thought of as an encoder network followed by a decoder network
 
+    Parameters
+    ----------
+    input_size - The size of the input data
+
+    Return
+    ------
+    model - tensorflow.keras.models.Model
 
     """
 
