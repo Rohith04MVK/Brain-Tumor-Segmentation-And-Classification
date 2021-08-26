@@ -1,5 +1,5 @@
 from tensorflow.keras.applications import EfficientNetB0
-from tensorflow.keras.layers import Dense, Conv2D, GlobalAveragePooling2D, Dropout
+from tensorflow.keras.layers import Dense, GlobalAveragePooling2D, Dropout
 from tensorflow.keras.models import Model
 
 
