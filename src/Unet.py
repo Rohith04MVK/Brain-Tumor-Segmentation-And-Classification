@@ -77,6 +77,13 @@ def unet_data_generator(
 
 
 def unet(input_size):
+    """
+    U-Nets are convolutuinal layers used for image segmentation.
+    Its architecture can be broadly thought of as an encoder network followed by a decoder network
+
+
+    """
+
     inputs = Input(input_size)
 
     conv1 = Conv2D(64, (3, 3), padding="same")(inputs)

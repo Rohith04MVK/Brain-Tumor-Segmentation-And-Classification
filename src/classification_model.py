@@ -14,7 +14,7 @@ def classification_model(input_size) -> Model:
 
     Return
     ------
-    model - tensorflow.keras.models.Model with the `EfficientNetB0` with additional layers for the classification
+    model - tensorflow.keras.models.Model including the `EfficientNetB0` weights with additional layers for the classification
     """
     effnet = EfficientNetB0(
         weights="imagenet", include_top=False, input_shape=input_size
