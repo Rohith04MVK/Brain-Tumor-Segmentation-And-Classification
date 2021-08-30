@@ -88,7 +88,6 @@ def unet(input_size):
     model - tensorflow.keras.models.Model
 
     """
-
     inputs = Input(input_size)
 
     conv1 = Conv2D(64, (3, 3), padding="same")(inputs)
