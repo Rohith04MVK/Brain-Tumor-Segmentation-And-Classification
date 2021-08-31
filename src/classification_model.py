@@ -6,7 +6,7 @@ from tensorflow.keras.models import Model
 def classification_model(input_size) -> Model:
     """
     The model used to classify the type of tumor.
-    This function uses the `EfficientNetB0` for transfer learning.
+    This function uses the `ResNet50` for transfer learning.
 
     Parameters
     ----------
@@ -14,10 +14,10 @@ def classification_model(input_size) -> Model:
 
     Return
     ------
-    model - tensorflow.keras.models.Model including the `EfficientNetB0` weights with additional layers for the classification
+    model - tensorflow.keras.models.Model including the `ResNet50` weights with additional layers for the classification
     """
     clf_model = ResNet50(
-        weights="imagenet", include_top=False, input_tensor=Input(shape=(256, 256, 3))
+        weights="imagenet", include_top=False, input_tensor=Input(input_size)
     )
     model = clf_model.output
     model = AveragePooling2D(pool_size=(4, 4))(model)
