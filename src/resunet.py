@@ -57,7 +57,7 @@ def upsample_concat(x, skip):
     return Concatenate()([X, skip])
 
 
-def resunet(input_shape):
+def resunet(input_shape) -> Model:
     """
     ResUNet
     -------
