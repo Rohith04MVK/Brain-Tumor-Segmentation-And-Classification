@@ -111,6 +111,7 @@ test_generator = test_datagen.flow_from_dataframe(
 )
 
 model = classification_model(input_size=(256, 256, 3))
+print("Model loaded!")
 
 h = model.fit(
     train_generator,
