@@ -6,6 +6,7 @@ import os
 import cv2
 from sklearn.model_selection import train_test_split
 import tensorflow as tf
+import re
 
 from resunet import resunet
 from losses import focal_tversky, tversky
@@ -30,17 +31,13 @@ df = pd.DataFrame({"patient_id": data_map[::2], "path": data_map[1::2]})
 df_imgs = df[~df["path"].str.contains("mask")]
 df_masks = df[df["path"].str.contains("mask")]
 
-# File path line length images for later sorting
-BASE_LEN = 77
-END_IMG_LEN = 79
-END_MASK_LEN = 79
 
 # Data sorting
 imgs = sorted(
-    df_imgs["path"].values, key=lambda x: int(x[BASE_LEN:END_IMG_LEN].strip("."))
+    df_imgs["path"].values, key=lambda x: int(re.search(r"\d+", x[-7:]).group())
 )
 masks = sorted(
-    df_masks["path"].values, key=lambda x: int(x[BASE_LEN:END_MASK_LEN].strip("_"))
+    df_masks["path"].values, key=lambda x: int(re.search(r"\d+", x[-12:]).group())
 )
 
 # Sorting check
