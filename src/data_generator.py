@@ -1,7 +1,7 @@
 import numpy as np
 import tensorflow as tf
 import cv2
-import skimage as io
+from skimage import io
 
 
 class DataGenerator(tf.keras.utils.Sequence):
