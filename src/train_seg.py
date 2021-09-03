@@ -95,7 +95,7 @@ adam = tf.keras.optimizers.Adam(learning_rate=0.05, epsilon=0.1)
 earlystopping = EarlyStopping(monitor="val_loss", mode="min", verbose=1, patience=20)
 # save the best model with lower validation loss
 checkpointer = ModelCheckpoint(
-    filepath="/content/drive/MyDrive/RohithWorkspace/models/ResUNet-segModel-weights.hdf5",
+    filepath="./models/ResUNet-segModel-weights.hdf5",
     verbose=1,
     save_best_only=True,
 )

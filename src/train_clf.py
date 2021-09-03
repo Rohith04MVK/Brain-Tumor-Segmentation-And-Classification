@@ -112,7 +112,7 @@ test_generator = test_datagen.flow_from_dataframe(
 
 earlystopping = EarlyStopping(monitor="val_loss", mode="min", verbose=1, patience=15)
 checkpointer = ModelCheckpoint(
-    filepath="/content/drive/MyDrive/RohithWorkspace/models/seg_cls_res.hdf5",
+    filepath="./models/seg_cls_res.hdf5",
     verbose=1,
     save_best_only=True,
 )
