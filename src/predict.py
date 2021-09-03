@@ -1,9 +1,7 @@
 import cv2
 import numpy as np
 import pandas as pd
-import tensorflow as tf
 from skimage import io
-from tensorflow.keras.models import load_model
 
 
 def prediction(test, model, model_seg):
