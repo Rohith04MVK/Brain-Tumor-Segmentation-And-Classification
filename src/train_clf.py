@@ -1,16 +1,17 @@
+import glob
+import os
+import random
+import re
+
+import cv2
 import numpy as np
 import pandas as pd
-import glob
-import random
-import os
-import cv2
-from sklearn.model_selection import train_test_split
 import tensorflow as tf
-import re
 from keras_preprocessing.image import ImageDataGenerator
+from sklearn.model_selection import train_test_split
 
-from classification_model import classification_model
 from callbacks import checkpointer, earlystopping
+from classification_model import classification_model
 
 data = pd.read_csv("./lgg-mri-segmentation/kaggle_3m/data.csv")
 
