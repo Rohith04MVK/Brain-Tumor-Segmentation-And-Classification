@@ -9,8 +9,8 @@ import pandas as pd
 import tensorflow as tf
 from keras_preprocessing.image import ImageDataGenerator
 from sklearn.model_selection import train_test_split
+from tensorflow.keras.callbacks import EarlyStopping, ModelCheckpoint, ReduceLROnPlateau
 
-from callbacks import checkpointer, earlystopping
 from classification_model import classification_model
 
 data = pd.read_csv("./lgg-mri-segmentation/kaggle_3m/data.csv")
@@ -71,7 +71,6 @@ brain_df_train = brain_df.drop(columns=["patient_id"])
 brain_df_train["mask"] = brain_df_train["mask"].apply(lambda x: str(x))
 print(brain_df_train.info())
 
-from sklearn.model_selection import train_test_split
 
 train, test = train_test_split(brain_df_train, test_size=0.15)
 
@@ -110,6 +109,17 @@ test_generator = test_datagen.flow_from_dataframe(
     shuffle=False,
     target_size=(256, 256),
 )
+
+earlystopping = EarlyStopping(monitor="val_loss", mode="min", verbose=1, patience=15)
+checkpointer = ModelCheckpoint(
+    filepath="/content/drive/MyDrive/RohithWorkspace/models/seg_cls_res.hdf5",
+    verbose=1,
+    save_best_only=True,
+)
+reduce_lr = ReduceLROnPlateau(
+    monitor="val_loss", mode="min", verbose=1, patience=10, min_delta=0.0001, factor=0.2
+)
+callbacks = [checkpointer, earlystopping, reduce_lr]
 
 model = classification_model(input_size=(256, 256, 3))
 print("Model loaded!")
