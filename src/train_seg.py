@@ -8,8 +8,8 @@ import numpy as np
 import pandas as pd
 import tensorflow as tf
 from sklearn.model_selection import train_test_split
+from tensorflow.keras.callbacks import EarlyStopping, ModelCheckpoint, ReduceLROnPlateau
 
-from callbacks import *
 from data_generator import DataGenerator
 from losses import focal_tversky, tversky
 from resunet import resunet
@@ -91,6 +91,18 @@ val_data = DataGenerator(val_ids, val_mask)
 seg_model = resunet(input_shape=(256, 256, 3))
 
 adam = tf.keras.optimizers.Adam(learning_rate=0.05, epsilon=0.1)
+
+earlystopping = EarlyStopping(monitor="val_loss", mode="min", verbose=1, patience=20)
+# save the best model with lower validation loss
+checkpointer = ModelCheckpoint(
+    filepath="/content/drive/MyDrive/RohithWorkspace/models/ResUNet-segModel-weights.hdf5",
+    verbose=1,
+    save_best_only=True,
+)
+reduce_lr = ReduceLROnPlateau(
+    monitor="val_loss", mode="min", verbose=1, patience=10, min_delta=0.0001, factor=0.2
+)
+
 seg_model.compile(optimizer=adam, loss=focal_tversky, metrics=[tversky])
 
 history = seg_model.fit(
