@@ -1,17 +1,18 @@
-import numpy as np
-import pandas as pd
 import glob
-import random
 import os
-import cv2
-from sklearn.model_selection import train_test_split
-import tensorflow as tf
+import random
 import re
 
-from resunet import resunet
-from losses import focal_tversky, tversky
-from data_generator import DataGenerator
+import cv2
+import numpy as np
+import pandas as pd
+import tensorflow as tf
+from sklearn.model_selection import train_test_split
+
 from callbacks import *
+from data_generator import DataGenerator
+from losses import focal_tversky, tversky
+from resunet import resunet
 
 data = pd.read_csv("./lgg-mri-segmentation/kaggle_3m/data.csv")
 
