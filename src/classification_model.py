@@ -1,5 +1,5 @@
 from tensorflow.keras.applications.resnet50 import ResNet50
-from tensorflow.keras.layers import Dense, AveragePooling2D, Dropout, Input, Flatten
+from tensorflow.keras.layers import AveragePooling2D, Dense, Dropout, Flatten, Input
 from tensorflow.keras.models import Model
 
 
