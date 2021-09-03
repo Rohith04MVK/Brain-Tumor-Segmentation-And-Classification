@@ -47,7 +47,7 @@ def focal_tversky(y_true, y_pred):
 
 def tversky_loss(y_true, y_pred):
     """
-    It's just the Tversky Index subtracted from the 1
+    It's just the Tversky Index subtracted from 1
 
     Parameters
     ----------
