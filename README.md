@@ -15,3 +15,11 @@ python data/segmentation/download_segmentation_data.py
 python src/train_seg.py
 python src/train_clf.py
 ```
+### Project structure
+
+This project has 3 main sections.
+
+- `src/` Contains the python scripts for training the ML Models.
+- `notebooks/` contains the jupyter notebooks with explanations.
+- `models/` pretrained models.
+- `data/` datasets for training the model.
