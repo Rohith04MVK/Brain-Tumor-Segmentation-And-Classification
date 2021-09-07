@@ -39,7 +39,7 @@ This is the mask applied on the MIR
 ![mask on mri](images/tumor_on_brain.png)
 
 ## Predictions
-The model returns a pandas dataframe as its out put
+The model returns a pandas dataframe as its output
 ![predictions](images/predictions.PNG)
 
 #### The predictions on the image
