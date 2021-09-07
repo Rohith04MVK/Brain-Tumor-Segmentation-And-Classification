@@ -41,3 +41,6 @@ This is the mask applied on the MIR
 ## Predictions
 The model returns a pandas dataframe as its out put
 ![predictions](images/predictions.PNG)
+
+#### The predictions on the image
+![The predictions on the image](images/AI_classified_tumors.png)
