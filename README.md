@@ -6,6 +6,7 @@ A library for classifying and segmentaing Brain tumors in brain MRI's.\
 It can classify an image as tumorus or non-tumorus and is able to localize the tumor if there is one.
 
 ## Installation and Quick Start
+Note: Pretrained models available [!here](https://stackoverflow.com/questions/33191744/how-to-add-new-line-in-markdown-presentation)
 ```
 git clone https://github.com/Rohith04MVK/Brain-Tumor-Segmentation-And-Classification
 cd Brain-Tumor-Segmentation-And-Classification 
@@ -13,4 +14,6 @@ mkdir models
 python data/segmentation/download_segmentation_data.py
 python src/train_seg.py
 python src/train_clf.py
+```
+## Predicting
 ```
