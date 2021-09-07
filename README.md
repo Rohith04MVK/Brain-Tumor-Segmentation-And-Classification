@@ -19,9 +19,25 @@ python example.py
 
 ### Project structure
 
-This project has 3 main sections.
+This project has 4 main sections.
 
 - `src/` Contains the python scripts for training the ML Models.
 - `notebooks/` contains the jupyter notebooks with explanations.
 - `models/` pretrained models.
 - `data/` datasets for training the model.
+## Data
+We are using the [lgg-mri-dataset](https://www.kaggle.com/mateuszbuda/lgg-mri-segmentation) which has the images and masks as .tif files.\
+This data will be split into 
+- 3006 Train images
+- 590 Testing images
+- 333 Validating images
+
+An example of the mask and the original image\
+![tumor and brain](images/brain_and_tumor.png)
+
+This is the mask applied on the MIR
+![mask on mri](images/tumor_on_brain.png)
+
+## Predictions
+The model returns a pandas dataframe as its out put
+![predictions](images/predictions.PNG)
