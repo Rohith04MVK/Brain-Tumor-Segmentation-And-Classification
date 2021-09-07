@@ -14,7 +14,9 @@ mkdir models
 python data/segmentation/download_segmentation_data.py
 python src/train_seg.py
 python src/train_clf.py
+python example.py
 ```
+
 ### Project structure
 
 This project has 3 main sections.
