@@ -34,7 +34,7 @@ class DataGenerator(tf.keras.utils.Sequence):
         "Generate a batch of data"
 
         # generate index of batch_size length
-        indexes = self.indexes[index * self.batch_size : (index + 1) * self.batch_size]
+        indexes = self.indexes[index * self.batch_size: (index + 1) * self.batch_size]
 
         # get the ImageId corresponding to the indexes created above based on batch size
         list_ids = [self.ids[i] for i in indexes]
@@ -93,14 +93,10 @@ class DataGenerator(tf.keras.utils.Sequence):
             mask /= mask.std()
 
             # Adding image to the empty array
-            X[
-                i,
-            ] = img
+            X[i] = img
 
-            # expanding the dimnesion of the image from (256,256) to (256,256,1)
-            y[
-                i,
-            ] = np.expand_dims(mask, axis=2)
+            # expanding the dimnesion of the image from (256, 256) to (256, 256, 1)
+            y[i] = np.expand_dims(mask, axis=2)
 
         # normalizing y
         y = (y > 0).astype(int)
