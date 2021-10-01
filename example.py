@@ -75,6 +75,7 @@ def pos_neg_diagnosis(mask_path):
 brain_df["mask"] = brain_df["mask_path"].apply(lambda x: pos_neg_diagnosis(x))
 
 brain_df_train = brain_df.drop(columns=["patient_id"])
+
 # Convert the data in mask column to string format, to use categorical mode in flow_from_dataframe
 brain_df_train["mask"] = brain_df_train["mask"].apply(lambda x: str(x))
 

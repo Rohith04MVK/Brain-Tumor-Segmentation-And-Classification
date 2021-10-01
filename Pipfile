@@ -4,15 +4,23 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-pandas = "1.1.5"
+pandas = "==1.1.5"
 opencv-python = "*"
-numpy = "1.19.5"
-tensorflow = "2.6.0"
+numpy = "==1.19.5"
+tensorflow = "==2.6.0"
 matplotlib = "*"
 jupyter = "*"
-scikit-image = "0.16.2"
+scikit-image = "==0.16.2"
 tqdm = "*"
 
 [dev-packages]
-pylint = "*"
-wheel = "*"
+autopep8 = "*"
+flake8 = "*"
+flake8-annotations = "*"
+flake8-bugbear = "*"
+flake8-import-order = "*"
+pre-commit = "*"
+
+[scripts]
+lint = "pre-commit run --all-files"
+precommit = "pre-commit install"
