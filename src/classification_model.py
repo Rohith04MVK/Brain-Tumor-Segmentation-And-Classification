@@ -30,7 +30,6 @@ def classification_model(input_size) -> Model:
 
     # Stack layers
     model = AveragePooling2D(pool_size=(4, 4))(model)
-
     model = Flatten(name="Flatten")(model)
 
     model = Dense(256, activation="relu")(model)

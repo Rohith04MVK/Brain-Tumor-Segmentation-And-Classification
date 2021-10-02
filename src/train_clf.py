@@ -11,7 +11,7 @@ from keras_preprocessing.image import ImageDataGenerator
 from sklearn.model_selection import train_test_split
 from tensorflow.keras.callbacks import EarlyStopping, ModelCheckpoint, ReduceLROnPlateau
 
-from classification_model import classification_model
+from .classification_model import classification_model
 
 data = pd.read_csv("./lgg-mri-segmentation/kaggle_3m/data.csv")
 

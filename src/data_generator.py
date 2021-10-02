@@ -58,7 +58,7 @@ class DataGenerator(tf.keras.utils.Sequence):
         if self.shuffle:
             np.random.shuffle(self.indexes)
 
-    def __data_generation(self, list_ids, list_mask):
+    def __data_generation(self, list_ids, list_mask) -> tuple:
         "generate the data corresponding the indexes in a given batch of images"
 
         # create empty arrays of shape (batch_size,height,width,depth)
