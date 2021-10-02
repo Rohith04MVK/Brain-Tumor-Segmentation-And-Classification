@@ -1,4 +1,4 @@
-from tensorflow.keras.layers import *
+from tensorflow.keras import layers
 from tensorflow.keras.models import Model
 
 
@@ -12,33 +12,29 @@ def resblock(X, filters):
 
     Parameters
     ----------
-    X - Input data
-
-    filters - Number of filters for the convolutional layer
-
-    Return
-    ------
-
+    X
+        Input data
+    filters
+        Number of filters for the convolutional layer
     """
-    X_copy = X  # copy of input
+    # Get a copy
+    X_copy = X
 
-    # main path
-    X = Conv2D(filters, kernel_size=(1, 1), kernel_initializer="he_normal")(X)
-    X = BatchNormalization()(X)
-    X = Activation("relu")(X)
+    # Main path
+    X = layers.Conv2D(filters, kernel_size=(1, 1), kernel_initializer="he_normal")(X)
+    X = layers.BatchNormalization()(X)
+    X = layers.Activation("relu")(X)
 
-    X = Conv2D(
-        filters, kernel_size=(3, 3), padding="same", kernel_initializer="he_normal"
-    )(X)
-    X = BatchNormalization()(X)
+    X = layers.Conv2D(filters, kernel_size=(3, 3), padding="same", kernel_initializer="he_normal")(X)
+    X = layers.BatchNormalization()(X)
 
-    # shortcut path
-    X_copy = Conv2D(filters, kernel_size=(1, 1), kernel_initializer="he_normal")(X_copy)
-    X_copy = BatchNormalization()(X_copy)
+    # Short path
+    X_copy = layers.Conv2D(filters, kernel_size=(1, 1), kernel_initializer="he_normal")(X_copy)
+    X_copy = layers.BatchNormalization()(X_copy)
 
-    # Adding the output from main path and short path together
-    X = Add()([X, X_copy])
-    X = Activation("relu")(X)
+    # Combine Main and short path
+    X = layers.Add()([X, X_copy])
+    X = layers.Activation("relu")(X)
 
     return X
 
@@ -49,12 +45,13 @@ def upsample_concat(x, skip):
 
     Parameters
     ----------
-    X - Input
-
-    skip - The layer to skip to
+    X
+        The Input
+    skip
+        The layer to skip to
     """
-    X = UpSampling2D((2, 2))(x)
-    return Concatenate()([X, skip])
+    X = layers.UpSampling2D((2, 2))(x)
+    return layers.Concatenate()([X, skip])
 
 
 def resunet(input_shape) -> Model:
@@ -73,33 +70,30 @@ def resunet(input_shape) -> Model:
 
     Return
     ------
-    model: tensorflow.keras.models.Model
+    model: Model
         The ResUNet
     """
-    X_input = Input(input_shape)  # iniating tensor of input shape
+    X_input = layers.Input(input_shape)  # iniating tensor of input shape
 
     # Stage 1
-    conv_1 = Conv2D(
-        16, 3, activation="relu", padding="same", kernel_initializer="he_normal"
-    )(X_input)
-    conv_1 = BatchNormalization()(conv_1)
-    conv_1 = Conv2D(
-        16, 3, activation="relu", padding="same", kernel_initializer="he_normal"
-    )(conv_1)
-    conv_1 = BatchNormalization()(conv_1)
-    pool_1 = MaxPool2D((2, 2))(conv_1)
+    conv_1 = layers.Conv2D(16, 3, activation="relu", padding="same", kernel_initializer="he_normal")(X_input)
+    conv_1 = layers.BatchNormalization()(conv_1)
+
+    conv_1 = layers.Conv2D(16, 3, activation="relu", padding="same", kernel_initializer="he_normal")(conv_1)
+    conv_1 = layers.BatchNormalization()(conv_1)
+    pool_1 = layers.MaxPool2D((2, 2))(conv_1)
 
     # stage 2
     conv_2 = resblock(pool_1, 32)
-    pool_2 = MaxPool2D((2, 2))(conv_2)
+    pool_2 = layers.MaxPool2D((2, 2))(conv_2)
 
     # Stage 3
     conv_3 = resblock(pool_2, 64)
-    pool_3 = MaxPool2D((2, 2))(conv_3)
+    pool_3 = layers.MaxPool2D((2, 2))(conv_3)
 
     # Stage 4
     conv_4 = resblock(pool_3, 128)
-    pool_4 = MaxPool2D((2, 2))(conv_4)
+    pool_4 = layers.MaxPool2D((2, 2))(conv_4)
 
     # Stage 5 (bottle neck)
     conv_5 = resblock(pool_4, 256)
@@ -121,8 +115,6 @@ def resunet(input_shape) -> Model:
     up_4 = resblock(up_4, 16)
 
     # final output
-    out = Conv2D(
-        1, (1, 1), kernel_initializer="he_normal", padding="same", activation="sigmoid"
-    )(up_4)
+    out = layers.Conv2D(1, (1, 1), kernel_initializer="he_normal", padding="same", activation="sigmoid")(up_4)
 
     return Model(X_input, out)

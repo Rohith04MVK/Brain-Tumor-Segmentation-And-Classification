@@ -12,6 +12,7 @@ matplotlib = "*"
 jupyter = "*"
 scikit-image = "==0.16.2"
 tqdm = "*"
+scikit-learn = "*"
 
 [dev-packages]
 autopep8 = "*"

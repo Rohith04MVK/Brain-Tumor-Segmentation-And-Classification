@@ -10,15 +10,14 @@ import tensorflow as tf
 from sklearn.model_selection import train_test_split
 from tensorflow.keras.callbacks import EarlyStopping, ModelCheckpoint, ReduceLROnPlateau
 
-from data_generator import DataGenerator
-from losses import focal_tversky, tversky
-from resunet import resunet
+from .data_generator import DataGenerator
+from .losses import focal_tversky, tversky
+from .resunet import resunet
 
 data = pd.read_csv("./lgg-mri-segmentation/kaggle_3m/data.csv")
 
 data_map = []
 for sub_dir_path in glob.glob("./lgg-mri-segmentation/kaggle_3m/" + "*"):
-    # if os.path.isdir(sub_path_dir):
     try:
         dir_name = sub_dir_path.split("/")[-1]
         for filename in os.listdir(sub_dir_path):
