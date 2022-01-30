@@ -86,4 +86,4 @@ The model returns a pandas dataframe as its output
 ![predictions](images/predictions.PNG)
 
 These are the model predictions for the images,
-![The predictions on the image](./images/AI_classified_tumors.png)
+![The predictions on the image](images/AI_classified_tumors.png)
