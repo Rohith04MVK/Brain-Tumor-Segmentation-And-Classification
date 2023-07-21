@@ -1,5 +1,7 @@
 <h1 align="center">Brain Tumor Segmentation And Classification using ML</h1>
 
+**TODO: Better readme**
+
 A project to classify and perform segmentation for Brain tumors in Brain MRI images.
 It is successfully able to classify if a person has tumor, or not, and locates the tumor
 if present.
