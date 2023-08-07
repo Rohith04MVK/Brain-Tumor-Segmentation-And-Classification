@@ -3,7 +3,7 @@
 **TODO: Better readme**
 
 A project to classify and perform segmentation for Brain tumors in Brain MRI images.
-It is successfully able to classify if a person has tumor, or not, and locates the tumor
+It is successfully able to classify if a person has a tumor, or not, and locates the tumor
 if present.
 
 ## Installation and Usage
@@ -69,7 +69,7 @@ This project has 3 main sections.
 ## Data
 
 The dataset being used here is [lgg-mri-dataset](https://www.kaggle.com/mateuszbuda/lgg-mri-segmentation).
-This has the brain MRI images, and it's respective masks too (as `.tif` files).
+This has the brain MRI images, and their respective masks too (as `.tif` files).
 
 When using, this dataset is split into,
 - 3006 Train images
@@ -84,7 +84,7 @@ This is the mask applied on the MIR
 
 ## Predictions
 
-The model returns a pandas dataframe as its output
+The model returns a pandas data frame as its output
 ![predictions](images/predictions.PNG)
 
 These are the model predictions for the images,
